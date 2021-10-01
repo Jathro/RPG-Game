@@ -50,6 +50,10 @@ MonoBehaviour:
   isHoming: 1
   hitEffect: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db,
     type: 3}
+  maxLifeTime: 5
+  destroyOnHit:
+  - {fileID: 8505443155034749450}
+  lifeAfterImpact: 0.2
 --- !u!65 &8803581734255454560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4940,6 +4944,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19801364, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
       propertyPath: SizeModule.z.minMaxState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 19801364, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
+      propertyPath: lengthInSec
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19801364, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].time
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

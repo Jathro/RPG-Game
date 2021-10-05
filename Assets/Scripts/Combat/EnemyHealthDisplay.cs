@@ -1,19 +1,26 @@
+using RPG.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.Attributes
+namespace RPG.Combat
 {
     public class EnemyHealthDisplay : MonoBehaviour
     {
-        Health health;
+        Fighter fighter;
 
         private void Awake()
         {
-            health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+            fighter = GameObject.FindGameObjectWithTag("Player").GetComponent<Fighter>();
         }
 
         private void Update()
         {
+            if (fighter.GetTarget() == null)
+            {
+                GetComponent<Text>().text = "N/A";
+                return;
+            }
+            Health health = fighter.GetTarget();
             GetComponent<Text>().text = Mathf.RoundToInt(health.GetPercentage()).ToString() + "%";
         }
     }

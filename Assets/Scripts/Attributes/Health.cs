@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
@@ -7,14 +8,21 @@ namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] float healthPoints = 100f;
+        float healthPoints = 100f;
         bool isDead = false;
         float baseHealth;
 
         private void Start()
         {
-            baseHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
+            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+            if (isDead) { return; }
+            baseHealth = GetMaxHealthPoints();
             healthPoints = baseHealth;
+        }
+
+        public float GetMaxHealthPoints()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         public bool IsDead()
@@ -24,6 +32,7 @@ namespace RPG.Attributes
 
         public void TakeDamage(GameObject instigator,float damage)
         {
+            Debug.Log(gameObject.name + " took damage: " + damage);
             if (healthPoints > 0)
             {
                 healthPoints = Mathf.Max(healthPoints - damage, 0);
@@ -33,6 +42,11 @@ namespace RPG.Attributes
                     AwardExperience(instigator);
                 }
             }
+        }
+
+        public float GetHealthPoints()
+        {
+            return healthPoints;
         }
 
         public float GetPercentage()
@@ -49,12 +63,18 @@ namespace RPG.Attributes
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
+        private void RegenerateHealth()
+        {
+            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
+
         private void AwardExperience(GameObject instigator)
         {
             Experience experience = instigator.GetComponent<Experience>();
             if (experience == null) { return; }
             
             experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+            baseHealth = GetMaxHealthPoints();
         }
 
         public object CaptureState()

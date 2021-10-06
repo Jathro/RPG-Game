@@ -14,7 +14,7 @@ namespace RPG.Attributes
 
         private void Update()
         {
-            GetComponent<Text>().text = Mathf.RoundToInt(health.GetPercentage()).ToString() + "%";
+            GetComponent<Text>().text = Mathf.RoundToInt(health.GetHealthPoints()).ToString() + " / " + Mathf.RoundToInt(health.GetMaxHealthPoints()).ToString();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace RPG.Combat
         {
             transform.LookAt(GetAimLocation());
         }
+        
         void Update()
         {
             if (target == null) { return; }

@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Asset Packs\GameDev.tv Assets\Scripts\Utils\LazyValue.cs" />
      <Compile Include="Assets\Scripts\Attributes\Health.cs" />
+     <Compile Include="Assets\Scripts\Attributes\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Attributes\HealthDisplay.cs" />
      <Compile Include="Assets\Scripts\Cinematics\CinematicsRemover.cs" />
      <Compile Include="Assets\Scripts\Cinematics\CinematicTrigger.cs" />

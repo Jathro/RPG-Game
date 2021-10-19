@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using RPG.SceneManagement;
 using UnityEngine.AI;
+using RPG.Core;
+using RPG.Control;
 
 namespace RPG.Portal
 {
@@ -19,7 +21,6 @@ namespace RPG.Portal
         [SerializeField] float fadeOutTime = 1f;
         [SerializeField] float fadeInTime = 2f;
         [SerializeField] float fadeWait = 2f;
-
 
         private void OnTriggerEnter(Collider other)
         {
@@ -40,13 +41,17 @@ namespace RPG.Portal
             DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
+            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
+            PlayerController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            playerController.enabled = false;
 
             yield return fader.FadeOut(fadeOutTime);
 
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
             wrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
+            PlayerController newplayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            newplayerController.enabled = false;
 
             wrapper.Load();
 
@@ -56,8 +61,9 @@ namespace RPG.Portal
             wrapper.Save();
 
             yield return new WaitForSeconds(fadeWait);
-            yield return fader.FadeIn(fadeInTime);
+            fader.FadeIn(fadeInTime);
             
+            newplayerController.enabled = true;
             Destroy(gameObject);
         }
 

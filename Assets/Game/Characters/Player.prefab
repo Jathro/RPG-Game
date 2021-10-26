@@ -29,7 +29,6 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: 39c4abc600fd1604981e476942426394, type: 3}
     hotspot: {x: 0, y: 0, z: 0}
   maxNavMeshProjectionDistance: 1
-  maxNavPathLength: 40
 --- !u!114 &4293073451665315079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +187,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 451104415560923693, guid: bd88d3c0c6361c845ac91a661e091a97,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5164285387397308734, guid: bd88d3c0c6361c845ac91a661e091a97,
         type: 3}
       propertyPath: m_Height
@@ -233,6 +237,22 @@ PrefabInstance:
         type: 3}
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559332189174968258, guid: bd88d3c0c6361c845ac91a661e091a97,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1788712511412992363, guid: f51f898e17f302f49919423060232e05,
+        type: 3}
+    - target: {fileID: 6559332189174968258, guid: bd88d3c0c6361c845ac91a661e091a97,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Aggrevate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559332189174968258, guid: bd88d3c0c6361c845ac91a661e091a97,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7628122594743701957, guid: bd88d3c0c6361c845ac91a661e091a97,
         type: 3}
@@ -308,11 +328,6 @@ PrefabInstance:
         type: 3}
       propertyPath: defaultWeaponName
       value: Sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 451104415560923693, guid: bd88d3c0c6361c845ac91a661e091a97,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd88d3c0c6361c845ac91a661e091a97, type: 3}
